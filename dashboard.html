@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HS ATTENDANCE SYSTEM</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Redirect to login page if not logged in
+    if (!localStorage.getItem('studentLoggedIn')) {
+      window.location.href = "login page.html";
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-dark bg-primary fixed-top">
+    <div class="container-fluid">
+      <button class="btn btn-outline-light d-md-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand" href="MAIN.HTML">HINDU SHIKSHA SAMITI</a>
+      <form class="d-flex align-items-center ms-auto" id="mainSearchForm" role="search">
+        <button class="btn btn-sm btn-outline-light me-2" type="button">Admission Query</button>
+        <input class="form-control form-control-sm me-2" id="mainSearchInput" type="search" placeholder="Search" aria-label="Search" autocomplete="off" list="searchOptions">
+        <datalist id="searchOptions">
+          <option value="Dashboard">
+          <option value="Profile">
+          <option value="Attendance">
+          <option value="Reports">
+          <option value="Assignments Report">
+          <option value="Test Report">
+          <option value="Fees Report">
+          <option value="Pay Fees">
+          <option value="Submit Assignment">
+          <option value="Update Daily Homework">
+          <option value="Add Remarks">
+          <option value="Add Complaint">
+          <option value="Classmates">
+          <option value="Toppers">
+          <option value="Events">
+          <option value="Activities">
+        </datalist>
+        <button class="btn btn-sm btn-light" type="submit">Submit</button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Sidebar (Offcanvas) -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="sidebarLabel">Menu</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="dashboard.html">
+            <i class="bi bi-house-door me-2"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="STUDENTS.html">
+            <i class="bi bi-person me-2"></i> Profile
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="attendance.html">
+            <i class="bi bi-calendar-check me-2"></i> Attendance
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="reports.html">
+            <i class="bi bi-file-earmark-text me-2"></i> Reports
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Sidebar (Minimal) -->
+  <div class="d-none d-md-block bg-light sidebar position-fixed" style="width: 250px; top: 56px; left: 0; z-index: 1030; height: calc(100vh - 56px); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+    <ul class="nav flex-column pt-3">
+      <li class="nav-item">
+        <a class="nav-link active" href="dashboard.html">
+          <i class="bi bi-house-door me-2"></i> Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="STUDENTS.html">
+          <i class="bi bi-person me-2"></i> Profile
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="attendance.html">
+          <i class="bi bi-calendar-check me-2"></i> Attendance
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="reports.html">
+          <i class="bi bi-file-earmark-text me-2"></i> Reports
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <main class="content pt-5" style="margin-left: 250px;">
+    <div class="container mt-4">
+      <!-- Welcome Heading -->
+      <nav class="navbar bg-body-tertiary mb-3">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">HI VAIBHAV</span>
+          <button class="btn btn-outline-danger ms-auto" onclick="logout()" type="button">
+            <i class="bi bi-box-arrow-right"></i> Logout
+          </button>
+        </div>
+      </nav>
+
+      <!-- Attendance Dashboard Card -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="card-title">Attendance Dashboard</h5>
+          <p class="card-text">Overview of attendance for the current week</p>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <h5 class="card-title">CLASS 1</h5>
+              <p class="card-text">Section A</p>
+              <p class="card-text">Total Students: 30</p>
+              <p class="card-text">Total Present: 28</p>
+              <p class="card-text">Total Absent: 2</p>
+              <a href="#" class="btn btn-primary mt-3">Find more</a>
+            </div>
+            <div class="col-lg-6 col-md-12 text-center">
+              <svg width="160" height="160" viewBox="0 0 160 160">
+                <circle cx="80" cy="80" r="70" fill="none" stroke="#e9ecef" stroke-width="14"/>
+                <circle cx="80" cy="80" r="70" fill="none" stroke="#0d6efd" stroke-width="14"
+                  stroke-dasharray="307.9 439.8" stroke-dashoffset="0" stroke-linecap="round"/>
+                <text x="80" y="92" text-anchor="middle" font-size="38" fill="#0d6efd" font-weight="bold">70%</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
